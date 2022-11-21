@@ -4,9 +4,14 @@ const Razorpay = require('razorpay');
 const dotenv = require('dotenv');
 dotenv.config();
 const app = express();
-mongoose.connect(process.env.MONGO_URI).then(() => {
-  console.log('mongodb connected');
-});
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log('mongodb connected');
+  })
+  .catch((err) => {
+    console.log('Anurag:- ' + err.message);
+  });
 
 app.use(express.json({ extended: false }));
 
